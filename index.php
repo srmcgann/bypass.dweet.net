@@ -64,8 +64,18 @@
   <script>
 
     document.fonts.onloadingdone=()=>{console.log('fonts loaded')}
-    duration = 1000*120|0
-    initialDelay = 10000
+    duration = window.location.href.toUpperCase().split('DURATION=')[1]
+    if(typeof duration !== 'undefined' && duration.length){
+      duration=+duration.split('&')[0]
+    } else {
+      duration = 1000*60|0
+    }
+    initialDelay = window.location.href.toUpperCase().split('DELAY=')[1]
+    if(typeof initialDelay !== 'undefined' && initialDelay.length){
+      initialDelay=+initialDelay.split('&')[0]
+    } else {
+      initialDelay = 4000
+    }
     vars=0
     song = './epiphany.mp3'
     vid = ''
